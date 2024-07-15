@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components';
 import { ViewData } from '../../components'; 
 
-function RangeboundView() {
+function RangeboundView({id}) {
   return (
     <MainView>
-        <ViewData index={2} />
+        <ViewData index={id} />
     </MainView>
   )
 }

@@ -1,21 +1,20 @@
+import React, { useState } from 'react';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
-import { useState } from 'react';
 import { BearishView, BullishView, RangeboundView, VolatileView } from './views';
 import styled from 'styled-components';
 
 function App() {
-    const [activeIndex, setActiveIndex] = useState(1);
 
-    const navItems = [
-      { to: '/bullish', label: 'Bullish' },
-      { to: '/bearish', label: 'Bearish' },
-      { to: '/rangebound', label: 'Rangebound' },
-      { to: '/volatile', label: 'Volatile' },
-    ];
+  const navItems = [
+    { to: '/bullish', label: 'Bullish' },
+    { to: '/bearish', label: 'Bearish' },
+    { to: '/rangebound', label: 'Rangebound' },
+    { to: '/volatile', label: 'Volatile' },
+  ];
 
-  const location = useLocation();
+  const { pathname } = useLocation();
 
-  let currentIndex = navItems.findIndex(item => item.to === location.pathname);
+  let currentIndex = navItems.findIndex(item => item.to === pathname);
   currentIndex = currentIndex == -1 ? 1 : currentIndex;
 
   return (
@@ -26,7 +25,6 @@ function App() {
             key={index}
             to={item.to}
             className={index === currentIndex ? 'active' : ''}
-            onClick={() => setActiveIndex(index)}
           >
             {item.label}
           </NavButton>
@@ -34,11 +32,11 @@ function App() {
       </Navigation>
       <DisplayView>
         <Routes>
-          <Route path='/' element={<BearishView />} />
-          <Route path='/bullish' element={<BullishView />} />
-          <Route path='/bearish' element={<BearishView />} />
-          <Route path='/rangebound' element={<RangeboundView />} />
-          <Route path='/volatile' element={<VolatileView />} />
+          <Route path='/' element={<BearishView id={1} />} />
+          <Route path='/bullish' element={<BullishView id={0}/>} />
+          <Route path='/bearish' element={<BearishView id={1}/>} />
+          <Route path='/rangebound' element={<RangeboundView id={2}/>} />
+          <Route path='/volatile' element={<VolatileView id={3}/>} />
         </Routes>
       </DisplayView>
     </PageView>

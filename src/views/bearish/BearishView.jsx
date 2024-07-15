@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components';
 import { ViewData } from '../../components';
 
-function BearishView() {
+function BearishView({id}) {
   return (
     <MainView>
-        <ViewData index={1} />
+        <ViewData index={id} />
     </MainView>
   )
 }

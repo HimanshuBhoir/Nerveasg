@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components';
 import { ViewData } from '../../components';
 
-function VolatileView() {
+function VolatileView({id}) {
   return (
     <MainView>
-        <ViewData index={3} />
+        <ViewData index={id} />
     </MainView>
   )
 }
